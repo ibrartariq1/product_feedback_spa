@@ -1,5 +1,9 @@
 # product_feedback_spa
 
+```
+node version must be greater or equal v18.18.0
+```
+
 ## Project setup
 ```
 npm install
@@ -21,4 +25,9 @@ npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+```
+after serve in admin change url of your project into api.js
+```
+
+
