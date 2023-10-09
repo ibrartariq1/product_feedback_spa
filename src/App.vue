@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <NavbarComponent />
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavbarComponent from "./components/layouts/navbar.vue";
+import util from '@/assets/js/util';
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    NavbarComponent,
+  },
+  watch: {
+    $route(nval, oval) {
+      let self = this;
+      if (oval.path) {
+        setTimeout(() => {
+          util.auth_middleware(self);
+        }, 500);
+      }
+    },
+  },
+  mounted() {
+    
+    util.auth_middleware(this);
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
